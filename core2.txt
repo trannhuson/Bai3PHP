@@ -41,8 +41,8 @@ thể được thực hiện khi chỉ thay đổi kiểu
 trị trả về có thể giống hoặc khác. Giá trị 
 trả về có thể giống hoặc khác, nhưng tham 
 số phải khác nhau.
-
-3) Mutable (Trạng thái - thay đổi được) Immutable (Trạng thái không thay đổi được)
+++++++++++++++++++++++++++++++++++++Thêm thêm thêm++++++++++++++++++++++++++++++++++++
+3) Mutable (Trạng thái - thay đổi được) Immutable Trạng thái không thay đổi được
 - Mutable Object: khi khởi tạo 1 đối tượng,thì trạng thái của đối tượng có thể thay đổi được sau khi việc khởi tạo đối tượng thành công. 
 (Trạng thái đối tượng ở đây có thể là các trường thông tin mà đối tượng đó nắm giữ. Ví dụ: tên, tuổi của 1 đối tượng sinh viên chẳng hạn)
 - 1 Class/Đối tượng được coi là immutable nếu các thuộc tính của nó không bao giờ bị thay đổi và chỉ có thể thiết lập lúc khởi tạo
@@ -63,7 +63,7 @@ VD String s = "hello"; s = s + "abc" ; như vậy sẽ tạo ra 2 đối tượn
 - StringBuilder không bất đồng bộ trong hàm, được sinh ra để cải thiện hiệu suất khi sử dụng String (nếu sử dụng String mỗi lần thêm, sửa , xóa sẽ tạo ra 1 String mới => tốn thời gian bộ nhớ)
 - StringBuffer Tất cả các hàm đều đồng bộ hóa (chậm hơn buider) Điều này có nghĩa là không thể có 2 luồng cùng truy cập phương thức của lớp StringBuffer đồng thời.
 - Đổi buider-> string sử dụng .toString()
-
+++++++++++++++++++++++++++++++++++++++ Thêm ở git ++++++++++++++
 4) String pool
 a) Khái niệm
 	- String pool là một vùng nhớ đặc biệt ở trong bộ nhớ heap, dùng để lưu trữ các biến được khai báo theo kiểu String
@@ -77,7 +77,7 @@ b) Sơ lược về String
 - Khi khai báo bằng cách 1: Java sẽ truy cập vào String Pool, rồi tìm ở trong Pool ô nhớ nào có cùng giá trị với nó, nếu tìm thấy thì sẽ tham chiếu đến địa chỉ của ô nhớ đó, 
 còn không thì nó sẽ tạo ô nhớ mới ở trong Pool rồi sẽ thực hiện việc tham chiếu.
 - Khi khai báo biến cách 2: Java sẽ không tạo ô nhớ mới ở bộ nhớ String Pool mà sẽ tạo ở Java Heap Space. Và khi đó nó sẽ luôn luôn tạo ô nhớ mới cho dù đã có sẵn những ô nhớ khác có cùng giá trị.
-
+++++++++++++++++++++++++++++++++++++++++++++++++++++ Thêm ở git +++++++++++++++++++++++++++++++++++++++++
 5) Pass by value và Pass by reference
 - Pass-by-value được hiểu là khi bạn thay đổi biến trong hàm thì ngoài hàm sẽ không bị ảnh hưởng. Nó giống như bạn copy giá trị của biến vào biến khác rồi truyền vào hàm.
 - Pass-by-reference là khi bạn thay đổi biến trong hàm cũng làm ngoài hàm bị ảnh hưởng. Nó giống như bạn truyền đúng địa chỉ của biến đó vào hàm.
@@ -85,6 +85,8 @@ còn không thì nó sẽ tạo ô nhớ mới ở trong Pool rồi sẽ thực 
 - Trong Java chúng ta có tổng 8 kiểu dữ liệu nguyên thuỷ như (int, long, double, float, character etc). Các biến thuộc kiểu dữ liệu nguyên thuỷ này được lưu trực tiếp trong stack memory
 - Túm lại đối với kiẻu dữ liệu nguyên thủy thì pass by value, còn đối tượng thì pass by reference
 - Nhưng khi Pass-by-reference, chương trình sẽ truyền thẳng địa chỉ ô nhớ vào function
++++++++++++++++++++++++++++++++++++++++++++++++++++
+cái này vừa thêm ở git ở git ở git
 - https://medium.com/@luanvv/pass-by-value-v%C3%A0-pass-by-reference-trong-java-eb1aa332abb6
 - https://viettuts.vn/java/truyen-gia-tri-va-tham-chieu-pass-value-va-pass-reference-trong-java
 
