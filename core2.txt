@@ -1,0 +1,95 @@
++)Abstract class và interface
++Khác nhau: các biến khai báo trong interface mặc định là final, còn trong abstract class thì có cả biến không final
+*Thành phần trong interface mặc định là public, abstract class có thể có các thành phần public, protect, default và private
+- Khi nào sử dụng interface
++ Khi muốn sử dụng đa kế thừa, đạt tính trừu tượng hoàn toàn
+- Sử dụng abstract class khi
++ có nhiều lớp muốn chia sẻ chung các đoạn code
++ Tạo ra một lớp chứa cả các phương thức abstract lẫn các thuộc tính, các phương thức có nội dung
+thực thi chi tiết
++ Chỉ ra các thành phần chung chỉ áp dụng cho một chuỗi các lớp con của nó (VD có nhiều lớp
+không liên quan đến nhau nhưng muốn sử dụng chung 1 hành vi nào đó)
+- Một lớp abstract không thể khởi tạo đối tượng (VD: Person person = new Person => không thể nếu Person là 1 class abstract
+VD hợp lệ: Person person = new Employee())
++)Phương thức static có thể vận hành mà không cần đối tượng, main là nơi chương trình chạy đầu tiên,
+khi main bắt đầu chạy khi ấy chưa có bất kỳ 1 đối tượng nào => main là static
++) Default rộng hơn private và protected < public (2 package không thể truy cập được default)
+1) abstract và interface
+a) abstract
+- Một lớp được khai báo là abstract thì đó là lớp trừu tượng (trừu tượng là một quá trình ẩn đi các cài đặt chi tiết và
+chỉ hiển thị tính năng đến người dùng). Nó cần được kế thừa và phương thức của nó cần phải được triển khai. Nó không thể khởi tạo
+- Tính trừu tượng hóa trong java (abstract 0-> 100%, interface 100%)
+- Một phương thức được khai báo là abstract thì phương thức đó là phương thức abstract (Nếu bạn muốn một lớp chứa một phương thức cụ thể nhưng bạn muốn triển khai thực sự 
+phương thức đó để được quyết định bởi các lớp con, thì bạn có thể khai báo phương thức đó trong lớp cha ở dạng abstract.)
+b) Interface
+- Lớp này được xem như một mặt nạ cho tất cả các Class cùng cách thức hoạt động nhưng có thể khác nhau về bản chất.
+- Một class có thể implement nhiều interface
+c) Sự khác nhau
+- abstract class là bản thiết kế cho class, interface là bản thiết kế cho phương thức.
+
+2) Overloading (nạp chồng phương thức), overriding (ghi đè phương thức)
+- Nếu một lớp có nhiều phương thức có tên giống nhau nhưng các tham số khác nhau, được gọi là overloading phương thức (nạp chồng phương thức)
+- Nếu lớp con có phương thức giống lớp cha được gọi là ghi đè (overriding) phương thức trong java.
+Nạp chồng						Ghi đè
+Giúp code dễ đọc hơn				Cung cấp cài đặt cụ thể cho phương thức đã được khai báo ở lớp cha
+Thực hiện bên trong 1 class			Xảy ra trong 2 class có quan hệ kế thừa
+Tham số phải khác nhau				Tham số phải giống nhau
+Đa hình trong lúc biên dịch			Đa hình trong lúc runtime
+Trong java, nạp chồng phương thức không 	Giá trị trả về phải giống nhau.
+thể được thực hiện khi chỉ thay đổi kiểu
+ giá trị trả về của phương thức. Kiểu giá 
+trị trả về có thể giống hoặc khác. Giá trị 
+trả về có thể giống hoặc khác, nhưng tham 
+số phải khác nhau.
+
+3) Mutable (Trạng thái - thay đổi được) Immutable (Trạng thái không thay đổi được)
+- Mutable Object: khi khởi tạo 1 đối tượng,thì trạng thái của đối tượng có thể thay đổi được sau khi việc khởi tạo đối tượng thành công. 
+(Trạng thái đối tượng ở đây có thể là các trường thông tin mà đối tượng đó nắm giữ. Ví dụ: tên, tuổi của 1 đối tượng sinh viên chẳng hạn)
+- 1 Class/Đối tượng được coi là immutable nếu các thuộc tính của nó không bao giờ bị thay đổi và chỉ có thể thiết lập lúc khởi tạo
+- Immutable hiểu nôm na là không thể thay đổi còn mutable là có thể thay đổi.
+
++) Tại sao lại dùng Immutable
+	+ Tránh được sự thay đổi lẫn nhau khi đa tham chiếu
+	VD:  (str1 và str2 cùng tham chiếu tới 1 vùng nhớ nhưng khi str1 thay đổi thì str2 sẽ không thay đổi)
+		String str1 = new String("first");
+		String str2 = str1;
+		str1 = str1.concat("-second"); // str1 thay đổi
+	+ Sử dụng các immutable object làm tham số của method sẽ không sợ nó bị thay đổi sau khi method kết thúc
++) Cách tạo 1 class Immutable
+	+ phải là final class (Không thể bị kế thừa)
+-trong java string là một đối tượng biểu diễn một nối tiếp của các ký tự
+- String là immutable class, StringBuilder và StringBuffer là mutable class.
+VD String s = "hello"; s = s + "abc" ; như vậy sẽ tạo ra 2 đối tượng trong bộ nhớ heap
+- StringBuilder không bất đồng bộ trong hàm, được sinh ra để cải thiện hiệu suất khi sử dụng String (nếu sử dụng String mỗi lần thêm, sửa , xóa sẽ tạo ra 1 String mới => tốn thời gian bộ nhớ)
+- StringBuffer Tất cả các hàm đều đồng bộ hóa (chậm hơn buider) Điều này có nghĩa là không thể có 2 luồng cùng truy cập phương thức của lớp StringBuffer đồng thời.
+- Đổi buider-> string sử dụng .toString()
+
+4) String pool
+a) Khái niệm
+	- String pool là một vùng nhớ đặc biệt ở trong bộ nhớ heap, dùng để lưu trữ các biến được khai báo theo kiểu String
+	- String pool giúp tối ưu hóa việc lưu trữ và sử dụng vùng nhớ khi khai báo biến String, giúp hạn chế tình trạng tràn bộ nhớ Java Heap Space
+b) Sơ lược về String
+- String là một immutable class. immutable là một lớp bất biến, các thuộc tính của nó không bao giờ bị thay đổi và chỉ có thể thiết lập lúc khởi tạo
+- Biến khai báo theo kiểu String khi được tạo ra sẽ được lưu vào String Pool
+- Có 2 cách để khai báo biến kiểu String
+	+ C1: String value = "abc"
+	+ C2: String value = new String("abc")
+- Khi khai báo bằng cách 1: Java sẽ truy cập vào String Pool, rồi tìm ở trong Pool ô nhớ nào có cùng giá trị với nó, nếu tìm thấy thì sẽ tham chiếu đến địa chỉ của ô nhớ đó, 
+còn không thì nó sẽ tạo ô nhớ mới ở trong Pool rồi sẽ thực hiện việc tham chiếu.
+- Khi khai báo biến cách 2: Java sẽ không tạo ô nhớ mới ở bộ nhớ String Pool mà sẽ tạo ở Java Heap Space. Và khi đó nó sẽ luôn luôn tạo ô nhớ mới cho dù đã có sẵn những ô nhớ khác có cùng giá trị.
+
+5) Pass by value và Pass by reference
+- Pass-by-value được hiểu là khi bạn thay đổi biến trong hàm thì ngoài hàm sẽ không bị ảnh hưởng. Nó giống như bạn copy giá trị của biến vào biến khác rồi truyền vào hàm.
+- Pass-by-reference là khi bạn thay đổi biến trong hàm cũng làm ngoài hàm bị ảnh hưởng. Nó giống như bạn truyền đúng địa chỉ của biến đó vào hàm.
+- Khi chương trình thực thi, dữ liệu trên RAM có thể được lưu trữ trên stack hoặc heap
+- Trong Java chúng ta có tổng 8 kiểu dữ liệu nguyên thuỷ như (int, long, double, float, character etc). Các biến thuộc kiểu dữ liệu nguyên thuỷ này được lưu trực tiếp trong stack memory
+- Túm lại đối với kiẻu dữ liệu nguyên thủy thì pass by value, còn đối tượng thì pass by reference
+- Nhưng khi Pass-by-reference, chương trình sẽ truyền thẳng địa chỉ ô nhớ vào function
+- https://medium.com/@luanvv/pass-by-value-v%C3%A0-pass-by-reference-trong-java-eb1aa332abb6
+- https://viettuts.vn/java/truyen-gia-tri-va-tham-chieu-pass-value-va-pass-reference-trong-java
+
+6) Final variable, final method, final class
+- Biến final: bạn không thể thay đổi giá trị của biến final (nó sẽ là hằng số).
+- Phương thức final: bạn không thể ghi đè phương thức final.
+- Lớp final: bạn không thể kế thừa lớp final.
+- Biến final trống: Một biến final mà không được khởi tạo tại thời điểm khai báo được gọi là biến final trống.
